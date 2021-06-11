@@ -6,7 +6,7 @@ WORKDIR /io/
 
 RUN sed -i 's/except OSError:  # Command not found/except:/g' /opt/_internal/cpython-3.6.13/lib/python3.6/site-packages/pip/_vendor/distro.py
 RUN python3.6 -m pip -VV
-RUN python3.6 -m pip install -U pip
+RUN python3.7 -m pip install -U pip
 
 FROM scratch as release
 COPY --from=build /io/dist /wheelhouse
