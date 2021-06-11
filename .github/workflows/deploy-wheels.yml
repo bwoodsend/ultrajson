@@ -35,7 +35,7 @@ jobs:
       run: |
         docker run -v "$(pwd):/io" bob-the-builder bash -c "
           rm -rf build /tmp/dist
-          python setup.py -q bdist_wheel -d /tmp/dist
+          /opt/python/cp36-cp36m/bin/python setup.py -q bdist_wheel -d /tmp/dist
           auditwheel repair /tmp/dist/*.whl -w dist
         "
 

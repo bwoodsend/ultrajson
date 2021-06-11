@@ -17,11 +17,8 @@
 ARG BASE=manylinux1_x86_64
 FROM quay.io/pypa/${BASE}
 
-# Choosing a Python version is done just by prepending its bin dir to PATH.
-ENV PATH=/opt/python/cp36-cp36m/bin:$PATH
-
 # Install dependencies. Do this before COPY to encourage caching.
-RUN pip install --prefer-binary wheel auditwheel
+RUN /opt/python/cp36-cp36m/bin/pip install --prefer-binary wheel auditwheel
 
 # Copy across enough of this repo to build from.
 RUN mkdir -p /io/
@@ -31,4 +28,4 @@ COPY . /io
 WORKDIR /io
 
 # Install it. Skip build isolation for speed (and sanity).
-RUN pip install --prefer-binary --no-build-isolation -e .
+RUN /opt/python/cp36-cp36m/bin/pip install --prefer-binary --no-build-isolation -e .
