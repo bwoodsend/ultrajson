@@ -1,5 +1,7 @@
 FROM quay.io/pypa/manylinux2014_aarch64 as build
 
+RUN uname -a
+
 RUN mkdir -p /io/
 COPY . /io/
 WORKDIR /io/
