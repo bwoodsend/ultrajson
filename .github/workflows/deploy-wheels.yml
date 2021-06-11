@@ -29,7 +29,8 @@ jobs:
 
     - name: Build docker image
       run: |
-        docker build -t bob-the-builder --build-arg BASE=manylinux2014_aarch64 -f scripts/Dockerfile .
+        docker buildx build --platform linux/arm64 \
+        -t ujson_aarch64 --output tmpwheelhouse -f scripts/Dockerfile .
 
     - name: Build wheel
       run: |
