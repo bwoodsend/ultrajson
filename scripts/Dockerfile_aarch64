@@ -4,7 +4,8 @@ RUN mkdir -p /io/
 COPY . /io/
 WORKDIR /io/
 
-RUN ./scripts/build-manylinux-wheels.sh
+RUN python3.6 -m pip -VV
+RUN python3.6 -m pip install -U pip
 
 FROM scratch as release
 COPY --from=build /io/dist /wheelhouse
