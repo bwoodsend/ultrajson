@@ -54,10 +54,7 @@ jobs:
     - name: Build ManyLinux2014_aarch64 wheels
       if: matrix.wheel == 'aarch64'
       run: |
-        docker buildx build --platform linux/arm64 \
-        -t ujson_aarch64 --output tmpwheelhouse -f scripts/Dockerfile_aarch64 .
-        mkdir -p dist
-        mv tmpwheelhouse/wheelhouse/*.whl dist/
+        docker run -v `pwd`:/io quay.io/pypa/manylinux2014_aarch64 /io/scripts/build-manylinux-wheels.sh
 
     - name: Build x86 Linux wheels
       if: matrix.wheel == 'x86'
