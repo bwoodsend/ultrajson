@@ -2,8 +2,6 @@ name: Deploy Linux wheels
 
 on:
   push:
-    branches:
-      - main
   release:
     types:
       - published
