@@ -2,8 +2,6 @@ name: Deploy Windows/macOS wheels
 
 on:
   push:
-    branches:
-      - main
   release:
     types:
       - published
